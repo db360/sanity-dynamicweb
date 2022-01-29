@@ -1,20 +1,26 @@
-import Head from 'next/head'
-import {sanityClient, urlFor} from '../sanity';
+import Head from "next/head";
+import { sanityClient } from "../sanity";
 
 //Components
-import Header from '../components/Header'
-import Hero from '../components/Hero';
-import PostsComponent from '../components/Posts';
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import PostsComponent from "../components/Posts";
 
 // Definiciones de Typescript
-import { Post } from '../typings';
-import Posts from '../components/Posts';
+import { Post } from "../typings";
+
+//animate: defines animation
+
+//initial: defines initial state
+
+//exit: define animation on exit
+
 
 interface Props {
-  posts: [Post]
+  posts: [Post];
 }
 
-export default function Home({posts}: Props): JSX.Element {
+export default function Home({ posts }: Props): JSX.Element {
   // console.log(posts);
   // console.log()
   return (
@@ -27,8 +33,8 @@ export default function Home({posts}: Props): JSX.Element {
       <Header />
 
       <Hero />
-      <PostsComponent posts={posts}/>
-    </div>
+          <PostsComponent posts={posts} />
+      </div>
   );
 }
 
@@ -49,7 +55,7 @@ export const getServerSideProps = async () => {
 
   //manda el fetctch a sanity
   const posts = await sanityClient.fetch(query);
-  return{
+  return {
     props: {
       posts,
     },
